@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "stock": 10,
+    "nombre": "remera",
+    "descripcion": "remera estampada",
+    "precio": 7000,
+    "imagen": "./imagenes/10remera.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 2,
+    "stock": 10,
+    "nombre": "remera",
+    "descripcion": "remera gris",
+    "precio": 7000,
+    "imagen": "./imagenes/2remera-gris.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 3,
+    "stock": 10,
+    "nombre": "remera",
+    "descripcion": "remera blanca",
+    "precio": 6000,
+    "imagen": "./imagenes/1camiseta-blanca.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 4,
+    "stock": 10,
+    "nombre": "camisa",
+    "descripcion": "camisa blanca",
+    "precio": 16000,
+    "imagen": "./imagenes/3camisa-blanca.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 5,
+    "stock": 10,
+    "nombre": "pantalon",
+    "descripcion": "jean claro",
+    "precio": 26000,
+    "imagen": "./imagenes/5pantalon-jean.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 6,
+    "stock": 10,
+    "nombre": "pantalon",
+    "descripcion": "jean clasico",
+    "precio": 25000,
+    "imagen": "./imagenes/4pantalon-jean.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 7,
+    "stock": 10,
+    "nombre": "pantalon",
+    "descripcion": "jean azul oscuro",
+    "precio": 23000,
+    "imagen": "./imagenes/9pantalonPortada.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 8,
+    "stock": 10,
+    "nombre": "bermuda",
+    "descripcion": "bermuda beige ",
+    "precio": 16000,
+    "imagen": "./imagenes/7bermudaBeige.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 9,
+    "stock": 10,
+    "nombre": "bermuda",
+    "descripcion": "bermuda negra",
+    "precio": 18000,
+    "imagen": "./imagenes/6bermuda.jpg",
+    "cantidad": 1
+  },
+  {
+    "id": 10,
+    "stock": 10,
+    "nombre": "camisa",
+    "descripcion": "camisa azul",
+    "precio": 16000,
+    "imagen": "./imagenes/8camisa.jpg",
+    "cantidad": 1
+  }
+]
