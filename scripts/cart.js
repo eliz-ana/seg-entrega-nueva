@@ -14,7 +14,8 @@ function renderCart(params) {
        <div class="card mb-3" >
           <div class="row g-0">
             <div class="col-sm-4">
-              <img src="${item.imagen}" class="img-fluid rounded-start" alt="${item.nombre}">
+              <img src="${item.imagen}" class="img-fluid rounded-start" alt="${item.nombre}"
+              style="height: 200px; object-fit: cover;">
             </div>
             <div class="col-sm-8">
               <div class="card-body">
@@ -54,8 +55,14 @@ function setBotones(params) {
       productoCart[index].cantidad++;
 
       localStorage.setItem("cartValues", JSON.stringify(productoCart));
+      Swal.fire({
+        title: "agregaste otro producto!",
+        icon: "success",
+        confirmButtonText: "Ok",
+      });
       renderCart();
       finazarCompra();
+      contadorCart();
     });
   });
   // funcion restar
@@ -68,6 +75,7 @@ function setBotones(params) {
         localStorage.setItem("cartValues", JSON.stringify(productoCart));
         renderCart();
         finazarCompra();
+        contadorCart();
       }
     });
   });
@@ -80,6 +88,7 @@ function setBotones(params) {
       localStorage.setItem("cartValues", JSON.stringify(productoCart));
       renderCart();
       finazarCompra();
+      contadorCart();
     });
   });
 }
@@ -91,7 +100,7 @@ function finazarCompra(params) {
     cartConfirm.innerHTML = "";
     if (productosCart.length === 0) {
       const vacio = document.createElement("div");
-      vacio.classList.add("alert", "alert-info", "w-75", "text-center");
+
       vacio.textContent = "El carrito está vacío.";
       cartConfirm.appendChild(vacio);
     } else {
@@ -122,22 +131,41 @@ function finazarCompra(params) {
       const btnCancelar = compra.querySelector(".btn-cancelar");
 
       btnConfirmar.addEventListener("click", () => {
-        toastSetter("¡Compra confirmada! Gracias por tu compra");
-
-        localStorage.removeItem("cartValues");
-        setTimeout(() => {
-          location.reload();
-        }, 2000);
+        Swal.fire({
+          title: "Compra confirmada!",
+          text: "Le llegara un mail con el detalle de la compra",
+          icon: "success",
+          confirmButtonText: "Confirmar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.removeItem("cartValues");
+            renderCart();
+            contadorCart();
+            cartConfirm.innerHTML = "Compra exitosa !";
+          }
+        });
       });
 
       btnCancelar.addEventListener("click", () => {
-        toastSetter("La compra ha sido cancelada");
-
-        localStorage.removeItem("cartValues"); // Limpia el carrito
-        cartConfirm.innerHTML = ""; // Limpia el resumen
-        setTimeout(() => {
-          location.reload();
-        }, 2000);
+        Swal.fire({
+          title: "Esta cancelando su compra!",
+          text: "¿Quiere continuar?",
+          icon: "warning",
+          confirmButtonText: "Confirmar",
+          showCancelButton: true,
+          cancelButtonText: "Cancelar",
+        }).then((result) => {
+          if (result.isConfirmed) {
+            localStorage.removeItem("cartValues"); // Limpia el carrito
+            cartConfirm.innerHTML = "Carrito vacio"; // Limpia el resumen
+            renderCart();
+            contadorCart();
+            Swal.fire({
+              title: "Carrito vacio",
+              icon: "success",
+            });
+          }
+        });
       });
     }
   }

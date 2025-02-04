@@ -4,7 +4,7 @@ let productos = [];
 function renderHeader(params) {
   const header = document.querySelector("#jsheader");
   if (header) {
-    header.innerHTML = `<nav class="navbar navbar-expand-lg bg-info-subtle">
+    header.innerHTML = `<nav class="navbar navbar-expand-lg bg-danger">
   <div class="container-fluid">
     <a class="navbar-brand" href="./index.html">Super Shop</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,7 @@ function renderHeader(params) {
       </div>
        <form id="searchForm" class="d-flex" role="search">
           <input id="searchInput" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-          <button class="btn btn-outline-secondary" type="submit">buscar</button>
+          <button class="btn btn-dark" type="submit">buscar</button>
         </form>
          <a href="./cart.html" class="btn btn-dark ms-auto cart-btn">Cart </a>
     </div>
@@ -33,16 +33,16 @@ function renderFooter(params) {
   const footer = document.querySelector("#jsFooter");
   if (footer) {
     footer.innerHTML = `
-    <nav class="navbar sticky-bottom mt-auto bg-info-subtle">
+    <nav class="navbar sticky-bottom mt-auto bg-danger">
       <div class="container text-center ">
         <h5 class="mx-auto">SuperShop</h5>
       </div>
       <div class="container text-center mx-auto">
-        <p class="fs-5">Contactos:</p>
-        <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
-        <a href="#" target="_blank"><i class="bi bi-whatsapp"></i></a>
-        <a href="#" target="_blank"><i class="bi bi-envelope-at"></i></a>
+        <p class="fs-4">Contactos:</p>
+        <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook text-light fs-5 "></i></a>
+        <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram text-light fs-5"></i></a>
+        <a href="#" target="_blank"><i class="bi bi-whatsapp text-light fs-5"></i></a>
+        <a href="#" target="_blank"><i class="bi bi-envelope-at text-light fs-5"></i></a>
       </div>
       <div class=" container text-center">
           <p class="fw-light mx-auto">&copy; 2025 Super Shop. Todos los derechos reservados.</p>
@@ -88,7 +88,7 @@ function renderProductos(productos, containerid) {
         <h5 class="card-title">${item.nombre}</h5>
         <p class="card-text">${item.descripcion}</p>
         <p class="card-text">Precio: $${item.precio}</p>
-        <button class="btn btn-outline-success add-to-cart" data-id="${item.id}">
+        <button class="btn btn-outline-danger add-to-cart" data-id="${item.id}">
             Comprar
         </button>
       </div>
@@ -133,7 +133,7 @@ function toastSetter(mensaje) {
   const toastContainer = document.getElementById("jsToastContainer");
   if (toastContainer) {
     const toast = document.createElement("div");
-    toast.className = "toast text-bg-success border-0 show";
+    toast.className = "toast text-bg-secondary border-0 show";
     toast.role = "alert";
     toast.ariaLive = "assertive";
     toast.ariaAtomic = "true";
@@ -153,8 +153,9 @@ function toastSetter(mensaje) {
 function contadorCart(params) {
   const jsCartBtn = document.querySelector(".cart-btn");
   const cartValues = JSON.parse(localStorage.getItem("cartValues")) || [];
+  const totalProd = cartValues.reduce((acc, item) => acc + item.cantidad, 0);
   if (jsCartBtn) {
-    jsCartBtn.textContent = `Cart (${cartValues.length})`;
+    jsCartBtn.textContent = `Cart (${totalProd})`;
   }
 }
 //funcion para buscar productos
